@@ -4,5 +4,7 @@ export { default as _columnMatches } from './_column-matches';
 export { default as matches } from './matches';
 export { default as strategies } from './strategies';
 export { default as highlighter } from './highlighter';
-export { default as highlightCell } from './highlight-cell';
-export { default as highlightValue } from './highlight-value';
+export { default as highlightCell } from './formatters/highlight-cell';
+export { default as highlightValue } from './formatters/highlight-value';
+export { default as Columns } from './components/search-columns';
+
