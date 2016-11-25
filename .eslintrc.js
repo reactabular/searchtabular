@@ -22,6 +22,7 @@ module.exports = {
     "react/forbid-prop-types": 0, // TODO: re-enable this later
     "react/sort-comp": 0, // personal preference
     "react/no-multi-comp": 0, // personal preference
+    "react/jsx-filename-extension": 0, // personal preference
     "jsx-a11y/no-static-element-interactions": 0 // personal preference
   }
 };

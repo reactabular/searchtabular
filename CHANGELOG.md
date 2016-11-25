@@ -1,5 +1,10 @@
 ## searchtabular
 
+1.1.0 / 2016-11-25
+==================
+
+  * Feature - Integrate highlighting functionality from `reactabular-highlight`. See README for the exact API.
+
 1.0.0 / 2016-11-25
 ==================
 
