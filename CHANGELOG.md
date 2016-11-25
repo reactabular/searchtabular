@@ -4,6 +4,7 @@
 ==================
 
   * Feature - Integrate `reactabular-search-columns`. See README for an example.
+  * Feature - Integrate `reactabular-search-field`. See README for an example.
 
 1.1.0 / 2016-11-25
 ==================

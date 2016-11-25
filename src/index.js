@@ -7,4 +7,5 @@ export { default as highlighter } from './highlighter';
 export { default as highlightCell } from './formatters/highlight-cell';
 export { default as highlightValue } from './formatters/highlight-value';
 export { default as Columns } from './components/search-columns';
+export { default as Field } from './components/field';
 
