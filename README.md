@@ -4,17 +4,17 @@
 
 Searchtabular comes with search helpers. It consists of search algorithms that can be applied to the rows. Just like with sorting, you have to apply it to the rows just before rendering. A column is considered searchable in case it has a unique `property` defined.
 
-## How to Use?
-
-The general workflow goes as follows:
-
-1. Set up a `Search` control that outputs a query in `{<column>: <query>}` format. If `<column>` is `all`, then the search will work against all columns. Otherwise it will respect the exact columns set. You'll most likely want to use either `reactabular-search-field` or `reactabular-search-columns` (or both) for this purpose or provide an implementation of your own if you are not using Reactabular.
-2. Before rendering the rows, perform `search.multipleColumns({ columns, query })(rows)`. This will filter the rows based on the passed `rows`, `columns` definition, and `query`. A lazy way to do this is to filter at `render()` although you can do it elsewhere too to optimize rendering.
-3. Pass the filtered rows to `Table`.
-
 ## API
 
 The search API consists of three parts. Out of these `search.multipleColumns` and `search.matches` are the most useful ones for normal usage. If the default search strategies aren't enough, it's possible to implement more as long as you follow the same interface.
+
+```javascript
+import * as search from 'searchtabular';
+
+// Or you can cherry-pick
+import { multipleColumns } from 'searchtabular';
+import { multipleColumns as searchMultipleColumns } from 'searchtabular';
+```
 
 ### Search
 
@@ -67,6 +67,12 @@ The strategies operate in two passes - evaluation and matching. The evaluation p
 To make it possible to highlight search results per column, there's a specific `highlightCell` formatter.
 
 ## How to Use?
+
+The general workflow goes as follows:
+
+1. Set up a `Search` control that outputs a query in `{<column>: <query>}` format. If `<column>` is `all`, then the search will work against all columns. Otherwise it will respect the exact columns set. You'll most likely want to use either `reactabular-search-field` or `reactabular-search-columns` (or both) for this purpose or provide an implementation of your own if you are not using Reactabular.
+2. Before rendering the rows, perform `search.multipleColumns({ columns, query })(rows)`. This will filter the rows based on the passed `rows`, `columns` definition, and `query`. A lazy way to do this is to filter at `render()` although you can do it elsewhere too to optimize rendering.
+3. Pass the filtered rows to `Table`.
 
 To use it, you'll first you have to annotate your rows using `highlighter`. It attaches a structure like this there:
 
