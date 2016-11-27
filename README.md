@@ -88,9 +88,8 @@ _highlights: {
 /*
 import React from 'react';
 import { compose } from 'redux';
-import {
-  Table, Search, resolve
-} from 'reactabular';
+import * as Table from 'reactabular-table';
+import * as resolve from 'table-resolver';
 import * as search from 'searchtabular';
 */
 
@@ -196,7 +195,7 @@ class HighlightTable extends React.Component {
       <div>
         <div className="search-container">
           <span>Search</span>
-          <Search
+          <search.Field
             column={searchColumn}
             query={query}
             columns={resolvedColumns}
@@ -237,7 +236,8 @@ Consider the example below.
 ```jsx
 /*
 import React from 'react';
-import { Table, resolve } from 'reactabular';
+import * as Table from 'reactabular-table';
+import * as resolve from 'table-resolver';
 import * as search from 'searchtabular';
 */
 
@@ -356,7 +356,8 @@ Consider the example below.
 ```jsx
 /*
 import React from 'react';
-import { Table, resolve } from 'reactabular';
+import * as Table from 'reactabular-table';
+import * as resolve from 'table-resolver';
 import * as search from 'searchtabular';
 */
 
