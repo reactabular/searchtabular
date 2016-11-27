@@ -18,7 +18,8 @@
   },
   "keywords": [
     "search",
-    "searching"
+    "searching",
+    "reactabular"
   ],
   "files": [
     "dist"
