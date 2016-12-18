@@ -4,6 +4,7 @@ const Options = ({
   columns,
   i18n,
   onChange = () => {},
+  components,
   value,
   ...props
 }) => (
@@ -15,6 +16,7 @@ const Options = ({
 );
 Options.propTypes = {
   columns: React.PropTypes.array,
+  components: React.PropTypes.object,
   i18n: React.PropTypes.object,
   onChange: React.PropTypes.func,
   value: React.PropTypes.any

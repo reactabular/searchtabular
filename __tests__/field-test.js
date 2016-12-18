@@ -154,10 +154,46 @@ describe('search.Field', function () {
 
     expect(option.text).toEqual(expected);
   });
+
+    it('supports custom filter input components', function () {
+        const columns = [
+            {
+                property: 'first',
+                header: {
+                    label: 'First'
+                }
+            },
+            {
+                property: 'second'
+            },
+            {
+                header: {
+                    label: 'Third'
+                }
+            }
+        ];
+        const value = 'test value';
+        const search = TestUtils.renderIntoDocument(
+            <Wrapper>
+              <Field columns={columns} components={{filter: CustomField}}/>
+            </Wrapper>
+        );
+        const input = TestUtils.scryRenderedDOMComponentsWithTag(search, 'textfield');
+        input.value = value;
+
+        expect(input.length).toBe(1);
+        expect(input.value).toBe(value);
+    });
 });
 
 class Wrapper extends React.Component { // eslint-disable-line max-len, react/prefer-stateless-function
   render() {
     return <div>{this.props.children}</div>;
+  }
+}
+
+class CustomField extends React.Component{
+  render() {
+    return <textfield className="CustomField" {...this.props}/>
   }
 }

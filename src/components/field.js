@@ -5,6 +5,7 @@ const Field = ({
   query,
   column = 'all',
   columns,
+  components,
   i18n,
   onChange,
   onColumnChange,
@@ -21,6 +22,11 @@ const Field = ({
       [column]: value
     })
   );
+  const filterInput = (Custom = 'input') => {
+      if(!columns.length) return null;
+
+      return <Custom onChange={onQueryChange} value={query[column] || ''}/>
+  };
 
   return (
     <div {...props}>
@@ -29,17 +35,16 @@ const Field = ({
         onChange={onOptionsChange}
         columns={columns}
         i18n={i18n}
+        components={components}
       />
-      {columns.length ?
-        <input type="input" onChange={onQueryChange} value={query[column] || ''} /> :
-        null
-      }
+      {filterInput(components.filter || 'input')}
     </div>
   );
 };
 Field.propTypes = {
   column: React.PropTypes.string,
   columns: React.PropTypes.array,
+  components: React.PropTypes.object,
   query: React.PropTypes.object,
   i18n: React.PropTypes.shape({
     all: React.PropTypes.string
@@ -49,6 +54,10 @@ Field.propTypes = {
 };
 Field.defaultProps = {
   columns: [],
+  components: {
+    filter: null,
+    select: null
+  },
   query: {},
   i18n: {
     all: 'All'
