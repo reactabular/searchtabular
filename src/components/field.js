@@ -25,7 +25,8 @@ const Field = ({
   const filterInput = (Custom = 'input') => {
       if(!columns.length) return null;
 
-      return <Custom onChange={onQueryChange} value={query[column] || ''}/>
+      const {filter = {}} = components.props || {};
+      return <Custom onChange={onQueryChange} value={query[column] || ''} {...filter}/>
   };
 
   return (
@@ -56,7 +57,11 @@ Field.defaultProps = {
   columns: [],
   components: {
     filter: null,
-    select: null
+    select: null,
+    props: {
+      filter: {},
+      select: {}
+    }
   },
   query: {},
   i18n: {

@@ -4,16 +4,41 @@ const Options = ({
   columns,
   i18n,
   onChange = () => {},
-  components,
+  components = {
+    select: null,
+    props: {
+      select: {}
+    }
+  },
   value,
   ...props
-}) => (
-  columns.length ? <select onChange={onChange} value={value} {...props}>{
-    getOptions(columns, i18n).map(({ name, value }) => // eslint-disable-line no-shadow, max-len
-      <option key={`${value}-option`} value={value}>{name}</option>
-    )
-  }</select> : null
-);
+}) => {
+
+  const componentBuilder = () => {
+    if(!columns.length) return null;
+
+    const opts = optionBuilder();
+    return (
+      components.select ? getCustomComponent(components.select, opts)
+      :  <select onChange={onChange} value={value} {...props}>{opts}</select>
+    );
+
+  };
+
+  const getCustomComponent = (Custom, opts) => {
+    const {select = {}} = components.props || {};
+    return <Custom onChange={onChange} value={value} options={opts} {...props} {...select} />;
+  };
+
+  const optionBuilder = () => {
+    return getOptions(columns, i18n).map(({ name, value }) => // eslint-disable-line no-shadow, max-len
+      (!components.select ? <option key={`${value}-option`} value={value}>{name}</option>
+        : { key: `${value}-option`, value, name })
+    );
+  };
+
+  return componentBuilder();
+};
 Options.propTypes = {
   columns: React.PropTypes.array,
   components: React.PropTypes.object,
