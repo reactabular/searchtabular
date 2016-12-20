@@ -63,6 +63,27 @@ describe('search._columnMatches', function () {
     expect(result).toEqual(true);
   });
 
+  it('casting strategy receives column', function () {
+    const query = 'foobar';
+    const initialColumn = {
+      property: 'demo'
+    };
+    const result = _columnMatches({
+      query,
+      column: initialColumn,
+      row: {
+        demo: 'foo'
+      },
+      castingStrategy: (v, column) => {
+        expect(column).toEqual(initialColumn);
+
+        return `${v}bar`;
+      }
+    });
+
+    expect(result).toEqual(true);
+  });
+
   it('accepts alternative transform', function () {
     const query = 'oba';
     const result = _columnMatches({
