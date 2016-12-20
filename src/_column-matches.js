@@ -21,7 +21,7 @@ const _columnMatches = ({
     return false;
   }
   // Pick resolved value by convention
-  const resolvedValue = castingStrategy(value);
+  const resolvedValue = castingStrategy(value, column);
 
   return strategy(transform(query)).evaluate(transform(resolvedValue));
 };
