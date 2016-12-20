@@ -485,7 +485,7 @@ class SearchTable extends React.Component {
   }
 }
 
-const CustomField = props => <textfield className="CustomField" {...props} />;
+const CustomField = props => <input className="CustomField" {...props} />;
 const CustomSelect = ({ options, onChange }) => (
   <div>
     <input className="controlled-field" type="text" onChange={onChange} defaultValue="all" />

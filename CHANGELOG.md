@@ -1,5 +1,10 @@
 ## searchtabular
 
+1.3.2 / 2016-12-20
+==================
+
+  * Docs - Use `input` over `textfield` at the readme example.
+
 1.3.1 / 2016-12-20
 ==================
 
