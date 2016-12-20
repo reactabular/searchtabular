@@ -347,8 +347,9 @@ class SearchColumnsTable extends React.Component {
 
 `searchtabular.Field` provides a search control with a column listing and an input.
 
-`searchtabular.Field` also supports custom component overrides for the column `<select>` and `<input>` field.<br/>
+`searchtabular.Field` also supports custom component overrides for the column `<select>` and `<input>` field.
 It is on you to couple the `onChange` events to the target fields rendered within your custom components.
+
 ## How to Use?
 
 Consider the example below.
