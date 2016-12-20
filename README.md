@@ -362,7 +362,7 @@ import React from 'react';
 import * as Table from 'reactabular-table';
 import * as resolve from 'table-resolver';
 import * as search from 'searchtabular';
-import {CustomField, CustomSelect} from './path/to/your/component';
+import { CustomField, CustomSelect } from './path/to/your/component';
 */
 
 class SearchTable extends React.Component {
@@ -458,21 +458,19 @@ class SearchTable extends React.Component {
             rows={resolvedRows}
             onColumnChange={searchColumn => this.setState({ searchColumn })}
             onChange={query => this.setState({ query })}
-            components={
-                {
-                    filter: CustomField,
-                    select: CustomSelect,
-                    props:{
-                        filter:{
-                            className: 'custom-textfield',
-                            placeholder: 'Refine Results'
-                        },
-                        select:{
-                            className: 'custom-select'
-                        }
-                    }
+            components={{
+              filter: CustomField,
+              select: CustomSelect,
+              props: {
+                filter: {
+                  className: 'custom-textfield',
+                  placeholder: 'Refine Results'
+                },
+                select: {
+                  className: 'custom-select'
                 }
-            }
+              }
+            }}
           />
         </div>
         <Table.Provider columns={resolvedColumns}>
@@ -486,6 +484,18 @@ class SearchTable extends React.Component {
     );
   }
 }
+
+const CustomField = props => <textfield className="CustomField" {...props} />;
+const CustomSelect = ({ options, onChange }) => (
+  <div>
+    <input className="controlled-field" type="text" onChange={onChange} defaultValue="all" />
+    <ul>
+      { options.map(({ key, name, value }) => (
+        <li key={key} data-value={value}>{name}</li>)
+      ) }
+    </ul>
+  </div>
+);
 
 <SearchTable />
 ```

@@ -1,5 +1,10 @@
 ## searchtabular
 
+1.3.1 / 2016-12-20
+==================
+
+  * Docs - Tune Reactabular example so that it actually runs.
+
 1.3.0 / 2016-12-20
 ==================
 
