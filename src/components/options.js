@@ -13,29 +13,32 @@ const Options = ({
   value,
   ...props
 }) => {
-
   const componentBuilder = () => {
-    if(!columns.length) return null;
+    if (!columns.length) {
+      return null;
+    }
 
     const opts = optionBuilder();
-    return (
-      components.select ? getCustomComponent(components.select, opts)
-      :  <select onChange={onChange} value={value} {...props}>{opts}</select>
-    );
 
+    return (
+      components.select ?
+        getCustomComponent(components.select, opts) :
+        <select onChange={onChange} value={value} {...props}>{opts}</select>
+    );
   };
 
   const getCustomComponent = (Custom, opts) => {
-    const {select = {}} = components.props || {};
+    const { select = {} } = components.props || {};
+
     return <Custom onChange={onChange} value={value} options={opts} {...props} {...select} />;
   };
 
-  const optionBuilder = () => {
-    return getOptions(columns, i18n).map(({ name, value }) => // eslint-disable-line no-shadow, max-len
+  const optionBuilder = () => (
+    getOptions(columns, i18n).map(({ name, value }) => // eslint-disable-line no-shadow, max-len
       (!components.select ? <option key={`${value}-option`} value={value}>{name}</option>
         : { key: `${value}-option`, value, name })
-    );
-  };
+    )
+  );
 
   return componentBuilder();
 };

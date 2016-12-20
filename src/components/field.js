@@ -23,10 +23,10 @@ const Field = ({
     })
   );
   const filterInput = (Custom = 'input') => {
-      if(!columns.length) return null;
+    if (!columns.length) return null;
 
-      const {filter = {}} = components.props || {};
-      return <Custom onChange={onQueryChange} value={query[column] || ''} {...filter}/>
+    const { filter = {} } = components.props || {};
+    return <Custom onChange={onQueryChange} value={query[column] || ''} {...filter} />;
   };
 
   return (
