@@ -64,13 +64,16 @@ describe('search.strategies.infix', function () {
     const text = ['orange', 'black', ['red', ['no', 'blabla', 'no']], 'able'];
 
     const predicate = infix(queryTerm);
-    const expected = [, // eslint-disable-line no-sparse-arrays
+    const expected = [
+      undefined,
       [{
         startIndex: 0,
         length: queryTerm.length
       }],
-      [, // eslint-disable-line no-sparse-arrays
-        [, // eslint-disable-line no-sparse-arrays
+      [
+        undefined,
+        [
+          undefined,
           [
             {
               startIndex: 0,
@@ -80,7 +83,8 @@ describe('search.strategies.infix', function () {
               startIndex: 3,
               length: queryTerm.length
             }
-          ],,
+          ],
+          undefined
         ]
       ],
       [{
@@ -124,11 +128,13 @@ describe('search.strategies.prefix', function () {
     const text = ['black', 'red', 'able'];
 
     const predicate = prefix(queryTerm);
-    const expected = [ // eslint-disable-line no-sparse-arrays
+    const expected = [
       [{
         startIndex: 0,
         length: queryTerm.length
-      }],,,
+      }],
+      undefined,
+      undefined
     ];
 
     expect(predicate.evaluate(text)).toEqual(true);
@@ -140,19 +146,24 @@ describe('search.strategies.prefix', function () {
     const text = ['orange', 'black', ['red', ['no', 'blabla', 'no']], 'able'];
 
     const predicate = prefix(queryTerm);
-    const expected = [, // eslint-disable-line no-sparse-arrays
+    const expected = [
+      undefined,
       [{
         startIndex: 0,
         length: queryTerm.length
       }],
-      [, // eslint-disable-line no-sparse-arrays
-        [, // eslint-disable-line no-sparse-arrays
+      [
+        undefined,
+        [
+          undefined,
           [{
             startIndex: 0,
             length: queryTerm.length
-          }],,
+          }],
+          undefined
         ]
-      ],,
+      ],
+      undefined
     ];
 
     expect(predicate.evaluate(text)).toEqual(true);
