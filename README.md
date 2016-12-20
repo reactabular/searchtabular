@@ -347,6 +347,8 @@ class SearchColumnsTable extends React.Component {
 
 `searchtabular.Field` provides a search control with a column listing and an input.
 
+`searchtabular.Field` also supports custom component overrides for the column `<select>` and `<input>` field.<br/>
+It is on you to couple the `onChange` events to the target fields rendered within your custom components.
 ## How to Use?
 
 Consider the example below.
@@ -359,6 +361,7 @@ import React from 'react';
 import * as Table from 'reactabular-table';
 import * as resolve from 'table-resolver';
 import * as search from 'searchtabular';
+import {CustomField, CustomSelect} from './path/to/your/component';
 */
 
 class SearchTable extends React.Component {
@@ -454,6 +457,21 @@ class SearchTable extends React.Component {
             rows={resolvedRows}
             onColumnChange={searchColumn => this.setState({ searchColumn })}
             onChange={query => this.setState({ query })}
+            components={
+                {
+                    filter: CustomField,
+                    select: CustomSelect,
+                    props:{
+                        filter:{
+                            className: 'custom-textfield',
+                            placeholder: 'Refine Results'
+                        },
+                        select:{
+                            className: 'custom-select'
+                        }
+                    }
+                }
+            }
           />
         </div>
         <Table.Provider columns={resolvedColumns}>
