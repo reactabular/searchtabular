@@ -154,10 +154,95 @@ describe('search.Field', function () {
 
     expect(option.text).toEqual(expected);
   });
+
+  it('supports custom filter input components', function () {
+    const columns = [
+        {
+            property: 'first',
+            header: {
+                label: 'First'
+            }
+        },
+        {
+            property: 'second'
+        },
+        {
+            header: {
+                label: 'Third'
+            }
+        }
+    ];
+    const value = 'test value';
+    const search = TestUtils.renderIntoDocument(
+        <Wrapper>
+          <Field columns={columns} components={{filter: CustomField }}/>
+        </Wrapper>
+    );
+    const input = TestUtils.scryRenderedDOMComponentsWithTag(search, 'textfield');
+    input.value = value;
+
+    expect(input.length).toBe(1);
+    expect(input.value).toBe(value);
+  });
+
+  it('supports custom select column filtering components', function () {
+      const columns = [
+          {
+              property: 'first',
+              header: {
+                  label: 'First'
+              }
+          },
+          {
+              property: 'second'
+          },
+          {
+              header: {
+                  label: 'Third'
+              }
+          }
+      ];
+      const search = TestUtils.renderIntoDocument(
+          <Wrapper>
+            <Field columns={columns} components={{filter: CustomField, select: CustomSelect}}/>
+          </Wrapper>
+      );
+      const options = TestUtils.scryRenderedDOMComponentsWithTag(search, 'li');
+      const input = TestUtils.findRenderedDOMComponentWithClass(search, 'controlled-field');
+      input.value = columns[0].property;
+
+      TestUtils.Simulate.change(input);
+      expect(input.value).toBe(columns[0].property);
+      expect(options.length).toEqual(2);
+      expect(options[0].textContent).toBe('All');
+      expect(options[1].getAttribute('data-value')).toEqual(columns[0].property);
+      expect(options[1].textContent).toEqual(columns[0].header.label);
+  });
 });
 
 class Wrapper extends React.Component { // eslint-disable-line max-len, react/prefer-stateless-function
   render() {
     return <div>{this.props.children}</div>;
+  }
+}
+
+class CustomField extends React.Component{
+  render() {
+    return <textfield className="CustomField" {...this.props}/>
+  }
+}
+
+class CustomSelect extends React.Component{
+  render(){
+    const {options, onChange} = this.props;
+
+    return(
+      <div>
+        <input className="controlled-field" type="text" onChange={onChange} defaultValue="all" />
+        <ul>
+          {options.map( ({key, name, value}) => (<li key={key} data-value={value}>{name}</li>) ) }
+        </ul>
+      </div>
+    )
   }
 }
