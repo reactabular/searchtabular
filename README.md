@@ -24,7 +24,7 @@ This is the highest level search function available. It expects `rows` and `colu
 
 It uses `infix` strategy underneath although it is possible to change it. By default it matches in a case **insensitive** manner. If you want case sensitive behavior, pass `a => a`(identity function) as `transform`.
 
-It will cast everything but arrays to a string by default. If you want a custom casting behavior, pass a custom function to `castingStrategy`.
+It will cast everything but arrays to a string by default. If you want a custom casting behavior, pass a custom function to `castingStrategy(value, column)`. It should return the cast result.
 
 **`search.singleColumn({ castingStrategy: <castingStrategy>, columns: [<object>], searchColumn: <string>, query: <string>, strategy: <strategy>, transform: <transform> })([<rows to query>]) => [<filtered rows>]`**
 
