@@ -1,5 +1,11 @@
 ## searchtabular
 
+1.3.0 / 2016-12-20
+==================
+
+  * Feature - Allow `Field` component customization. #1
+  * Feature - Pass `column` to `castingStrategy` as its second parameter. #2
+
 1.2.0 / 2016-11-25
 ==================
 
