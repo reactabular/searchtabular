@@ -1,5 +1,10 @@
 ## searchtabular
 
+1.3.3 / 2017-02-18
+==================
+
+  * Bug fix - Add a guard against `undefined` value at `highlightCell`. #8
+
 1.3.2 / 2016-12-20
 ==================
 
