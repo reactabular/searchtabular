@@ -3,7 +3,7 @@ import SearchOptions from './options';
 
 const Field = ({
   query,
-  column = 'all',
+  column,
   columns,
   components,
   i18n,
@@ -54,6 +54,7 @@ Field.propTypes = {
   onColumnChange: React.PropTypes.func
 };
 Field.defaultProps = {
+  column: 'all',
   columns: [],
   components: {
     filter: null,
