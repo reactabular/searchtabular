@@ -20,6 +20,10 @@ function highlighter({ columns, matches, query } = {}) {
       // Pick resolved value by convention
       const resolvedValue = row[`_${property}`] || value;
 
+      if (typeof resolvedValue === 'undefined') {
+        return;
+      }
+
       ret[property] = value;
 
       // Retain possibly resolved value

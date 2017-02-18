@@ -166,6 +166,45 @@ describe('search.highlighter', function () {
     // expect(result).to.deep.equal(expected);
   });
 
+  it('does not add undefined values', function () {
+    const columns = [
+      {
+        property: 'name'
+      }
+    ];
+    const rows = [
+      { name: 'demo', id: 5 },
+      { id: 10 }
+    ];
+    const expected = [
+      {
+        _highlights: {
+          name: [
+            {
+              startIndex: 0,
+              length: 4
+            }
+          ]
+        },
+        name: 'demo',
+        id: 5
+      },
+      {
+        _highlights: {},
+        id: 10
+      }
+    ];
+    const result = highlighter({
+      columns,
+      matches,
+      query: {
+        name: 'demo'
+      }
+    })(rows);
+
+    expect(result).toEqual(expected);
+  });
+
   it('throws an error if columns are not passed', function () {
     expect(highlighter.bind(null, {
       matches,
