@@ -31,5 +31,8 @@ SearchColumns.propTypes = {
   onChange: React.PropTypes.func.isRequired,
   query: React.PropTypes.object
 };
+SearchColumns.defaultProps = {
+  query: {}
+};
 
 export default SearchColumns;
