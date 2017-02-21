@@ -1,5 +1,10 @@
 ## searchtabular
 
+1.4.0 / 2017-02-21
+==================
+
+  * Feature - Allow searching against arrays. #10
+
 1.3.3 / 2017-02-18
 ==================
 
