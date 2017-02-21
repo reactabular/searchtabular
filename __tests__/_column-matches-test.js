@@ -31,6 +31,39 @@ describe('search._columnMatches', function () {
     expect(result).toEqual(false);
   });
 
+
+  it('returns matching query with arrays in column', function () {
+    const query = 'foo';
+    const result = _columnMatches({
+      query,
+      column: {
+        property: 'demo'
+      },
+      row: {
+        demo: ['foobar', 'bazbar']
+      },
+      resolve: () => null
+    });
+
+    expect(result).toEqual(true);
+  });
+
+  it('does not return missing query with arrays in column', function () {
+    const query = 'zoo';
+    const result = _columnMatches({
+      query,
+      column: {
+        property: 'demo'
+      },
+      row: {
+        demo: ['foobar', 'bazbar']
+      },
+      resolve: () => null
+    });
+
+    expect(result).toEqual(false);
+  });
+
   it('accepts alternative strategy', function () {
     const query = 'oba';
     const result = _columnMatches({
