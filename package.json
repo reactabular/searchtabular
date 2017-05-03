@@ -55,11 +55,11 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
     "git-prepush-hook": "^1.0.2",
-    "jest": "^18.1.0",
+    "jest": "^19.0.2",
     "lodash": "^4.17.4",
-    "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "rimraf": "^2.6.0"
   },
   "peerDependencies": {
