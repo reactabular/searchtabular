@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SearchColumns = ({ columns, query, onChange }) => {
   const onQueryChange = (event) => {
@@ -27,9 +28,9 @@ const SearchColumns = ({ columns, query, onChange }) => {
   );
 };
 SearchColumns.propTypes = {
-  columns: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  query: React.PropTypes.object
+  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChange: PropTypes.func.isRequired,
+  query: PropTypes.object
 };
 SearchColumns.defaultProps = {
   query: {}

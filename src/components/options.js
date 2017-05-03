@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Options = ({
   columns,
@@ -43,11 +44,11 @@ const Options = ({
   return componentBuilder();
 };
 Options.propTypes = {
-  columns: React.PropTypes.array,
-  components: React.PropTypes.object,
-  i18n: React.PropTypes.object,
-  onChange: React.PropTypes.func,
-  value: React.PropTypes.any
+  columns: PropTypes.array,
+  components: PropTypes.object,
+  i18n: PropTypes.object,
+  onChange: PropTypes.func,
+  value: PropTypes.any
 };
 
 const getOptions = (columns, i18n) => (

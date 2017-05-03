@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchOptions from './options';
 
 const Field = ({
@@ -43,15 +44,15 @@ const Field = ({
   );
 };
 Field.propTypes = {
-  column: React.PropTypes.string,
-  columns: React.PropTypes.array,
-  components: React.PropTypes.object,
-  query: React.PropTypes.object,
-  i18n: React.PropTypes.shape({
-    all: React.PropTypes.string
+  column: PropTypes.string,
+  columns: PropTypes.array,
+  components: PropTypes.object,
+  query: PropTypes.object,
+  i18n: PropTypes.shape({
+    all: PropTypes.string
   }),
-  onChange: React.PropTypes.func,
-  onColumnChange: React.PropTypes.func
+  onChange: PropTypes.func,
+  onColumnChange: PropTypes.func
 };
 Field.defaultProps = {
   column: 'all',
