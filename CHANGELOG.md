@@ -1,5 +1,10 @@
 ## searchtabular
 
+1.5.0 / 2017-05-03
+==================
+
+  * Refactor - React 15.5 upgrades, fixed deprecations, Jest upgrade. #11
+
 1.4.0 / 2017-02-21
 ==================
 
