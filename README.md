@@ -4,6 +4,8 @@
 
 Searchtabular comes with search helpers. It consists of search algorithms that can be applied to the rows. Just like with sorting, you have to apply it to the rows just before rendering. A column is considered searchable in case it has a unique `property` defined.
 
+> If you want advanced filters including date, number, and boolean, see [searchtabular-antd](https://www.npmjs.com/package/searchtabular-antd).
+
 ## API
 
 The search API consists of three parts. Out of these `search.multipleColumns` and `search.matches` are the most useful ones for normal usage. If the default search strategies aren't enough, it's possible to implement more as long as you follow the same interface.
