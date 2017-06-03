@@ -1,5 +1,10 @@
 ## searchtabular
 
+1.5.1 / 2017-06-03
+==================
+
+  * Chore - Mention *searchtabular-antd*.
+
 1.5.0 / 2017-05-03
 ==================
 
