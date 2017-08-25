@@ -83,6 +83,75 @@ describe('search.highlightValue', function () {
 
     expect(resultElement.innerHTML).toEqual(value);
   });
+
+  it('highlights part of an array', function () {
+    const value = ['my', 'foobar', 'value'];
+    const highlights = [
+      [],
+      [{ startIndex: 1, length: 3 }],
+      []
+    ];
+
+    const result = TestUtils.renderIntoDocument(
+        React.createElement(
+            Wrapper,
+            {},
+            highlightValue(value, highlights)
+        )
+    );
+
+    const highlightResult = TestUtils.findRenderedDOMComponentWithClass(
+        result, 'highlight'
+    );
+
+    expect(highlightResult.innerHTML).toEqual('oob');
+  });
+
+  it('highlights with an array but no result', function () {
+    const value = ['my', 'foobar', 'value'];
+    const highlights = [
+      [],
+      [],
+      []
+    ];
+
+    const result = TestUtils.renderIntoDocument(
+        React.createElement(
+            Wrapper,
+            {},
+            highlightValue(value, highlights)
+        )
+    );
+
+    const highlightResult = TestUtils.scryRenderedDOMComponentsWithClass(
+        result, 'highlight'
+    );
+
+    expect(highlightResult.length).toEqual(0);
+  });
+
+  it('highlights part of an array', function () {
+    const value = ['mobay', 'foobar', 'valobaue'];
+    const highlights = [
+        [{ startIndex: 1, length: 3 }],
+        [{ startIndex: 2, length: 3 }],
+        [{ startIndex: 3, length: 3 }]
+    ];
+
+    const result = TestUtils.renderIntoDocument(
+        React.createElement(
+            Wrapper,
+            {},
+            highlightValue(value, highlights)
+        )
+    );
+
+    const highlightResult = TestUtils.scryRenderedDOMComponentsWithClass(
+        result, 'highlight'
+    );
+
+    expect(highlightResult.length).toEqual(3);
+  });
 });
 
 class Wrapper extends React.Component { // eslint-disable-line max-len, react/prefer-stateless-function
