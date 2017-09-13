@@ -2,8 +2,8 @@ import { isArray } from 'lodash';
 import strategies from './strategies';
 
 const defaultTransform = (v = '') => (isArray(v)
-        ? v.map(v2 => defaultTransform(v2))
-        : v && v.toLowerCase && v.toLowerCase()
+  ? v.map(v2 => defaultTransform(v2))
+  : v && v.toLowerCase && v.toLowerCase()
 );
 const defaultCastingStrategy = v => (isArray(v) ? v : String(v));
 

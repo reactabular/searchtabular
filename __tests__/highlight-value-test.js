@@ -93,15 +93,15 @@ describe('search.highlightValue', function () {
     ];
 
     const result = TestUtils.renderIntoDocument(
-        React.createElement(
-            Wrapper,
-            {},
-            highlightValue(value, highlights)
-        )
+      React.createElement(
+        Wrapper,
+        {},
+        highlightValue(value, highlights)
+      )
     );
 
     const highlightResult = TestUtils.findRenderedDOMComponentWithClass(
-        result, 'highlight'
+      result, 'highlight'
     );
 
     expect(highlightResult.innerHTML).toEqual('oob');
@@ -116,15 +116,15 @@ describe('search.highlightValue', function () {
     ];
 
     const result = TestUtils.renderIntoDocument(
-        React.createElement(
-            Wrapper,
-            {},
-            highlightValue(value, highlights)
-        )
+      React.createElement(
+        Wrapper,
+        {},
+        highlightValue(value, highlights)
+      )
     );
 
     const highlightResult = TestUtils.scryRenderedDOMComponentsWithClass(
-        result, 'highlight'
+      result, 'highlight'
     );
 
     expect(highlightResult.length).toEqual(0);
@@ -133,21 +133,21 @@ describe('search.highlightValue', function () {
   it('highlights part of an array', function () {
     const value = ['mobay', 'foobar', 'valobaue'];
     const highlights = [
-        [{ startIndex: 1, length: 3 }],
-        [{ startIndex: 2, length: 3 }],
-        [{ startIndex: 3, length: 3 }]
+      [{ startIndex: 1, length: 3 }],
+      [{ startIndex: 2, length: 3 }],
+      [{ startIndex: 3, length: 3 }]
     ];
 
     const result = TestUtils.renderIntoDocument(
-        React.createElement(
-            Wrapper,
-            {},
-            highlightValue(value, highlights)
-        )
+      React.createElement(
+        Wrapper,
+        {},
+        highlightValue(value, highlights)
+      )
     );
 
     const highlightResult = TestUtils.scryRenderedDOMComponentsWithClass(
-        result, 'highlight'
+      result, 'highlight'
     );
 
     expect(highlightResult.length).toEqual(3);
