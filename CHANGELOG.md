@@ -1,5 +1,10 @@
 ## searchtabular
 
+1.6.0 / 2017-09-14
+==================
+
+  * Fix - Handle arrays correctly within the highlight formatters. #14
+
 1.5.1 / 2017-06-03
 ==================
 
