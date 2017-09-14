@@ -29,8 +29,7 @@ describe('search.Field', function () {
     expect(options[0].textContent).toEqual(columns[0].header.label);
   });
 
-  it(`has a dropdown that contains columns
-    which have both property and header`, function () {
+  it('has a dropdown that contains columns which have both property and header', function () {
     const columns = [
       {
         property: 'first',

@@ -27,6 +27,33 @@ describe('search.highlightCell', function () {
     expect(highlightedResult.innerHTML).toEqual(value);
   });
 
+  it('digs data from _highlights of the row with arrays', function () {
+    const value = ['my', 'foobar', 'value'];
+    const result = TestUtils.renderIntoDocument(
+      React.createElement(
+        Wrapper,
+        {},
+        highlightCell(value, {
+          rowData: {
+            _highlights: {
+              demo: [
+                [],
+                [{ startIndex: 2, length: 3 }],
+                []
+              ]
+            }
+          },
+          property: 'demo'
+        })
+      )
+    );
+    const highlightedResult = TestUtils.findRenderedDOMComponentWithClass(
+      result, 'highlight'
+    );
+
+    expect(highlightedResult.innerHTML).toEqual('oba');
+  });
+
   it('does not crash if only value is provided', function () {
     const value = 'foobar';
     const result = TestUtils.renderIntoDocument(

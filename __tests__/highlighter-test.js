@@ -41,6 +41,54 @@ describe('search.highlighter', function () {
     expect(result).toEqual(expected);
   });
 
+  it('highlights arrays using matches', function () {
+    const columns = [
+      {
+        property: 'name'
+      }
+    ];
+    const rows = [
+      { name: ['my', 'demo'] },
+      { name: ['another'] },
+      { name: ['and', 'another', 'another'] }
+    ];
+    const expected = [
+      {
+        _highlights: {
+          name: [
+            [],
+            [{
+              startIndex: 0,
+              length: 4
+            }]
+          ]
+        },
+        name: ['my', 'demo']
+      },
+      {
+        _highlights: {
+          name: [[]]
+        },
+        name: ['another']
+      },
+      {
+        _highlights: {
+          name: [[], [], []]
+        },
+        name: ['and', 'another', 'another']
+      }
+    ];
+    const result = highlighter({
+      columns,
+      matches,
+      query: {
+        name: 'demo'
+      }
+    })(rows);
+
+    expect(result).toEqual(expected);
+  });
+
   it('retains original data', function () {
     const columns = [
       {

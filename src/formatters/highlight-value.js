@@ -1,8 +1,13 @@
+import { isArray } from 'lodash';
 import React from 'react';
 
-const highlightValue = (value, highlights) => {
+const highlightValue = (value, highlights, index = 0) => {
   if (!highlights) {
     return <span>{value}</span>;
+  }
+
+  if (isArray(value)) {
+    return value.map((v, i) => highlightValue(v, highlights[i], i));
   }
 
   const val = String(value); // deals with arrays/numbers/...
@@ -36,7 +41,7 @@ const highlightValue = (value, highlights) => {
     <span key={`${x}-remainder`}>{val.slice(currentPosition)}</span>
   );
 
-  return <span className="search-result">{children}</span>;
+  return <span className="search-result" key={`result-${index}`}>{children}</span>;
 };
 
 export default highlightValue;

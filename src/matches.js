@@ -1,3 +1,4 @@
+import { isArray } from 'lodash';
 import strategies from './strategies';
 
 const matches = ({
@@ -5,6 +6,10 @@ const matches = ({
 } = {}) => {
   if (!query) {
     return {};
+  }
+
+  if (isArray(value)) {
+    return value.map(v => matches({ value: v, query, strategy, transform }));
   }
 
   const val = value && value.toString ? value.toString() : '';
