@@ -1,6 +1,6 @@
 {
   "name": "searchtabular",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Search utilities",
   "scripts": {
     "test:all": "npm run test:lint && npm test",
