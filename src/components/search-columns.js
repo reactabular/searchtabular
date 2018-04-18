@@ -13,7 +13,7 @@ const SearchColumns = ({ columns, query, onChange }) => {
     <tr>
       {columns.map((column, i) => (
         <th key={`${column.property || i}-column-filter`} className="column-filter">
-          {column && column.property ?
+          {(column && column.property) && (!('filterable' in column) || column.filterable) ?
             <input
               onChange={onQueryChange}
               className="column-filter-input"
