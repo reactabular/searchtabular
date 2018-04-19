@@ -345,6 +345,8 @@ class SearchColumnsTable extends React.Component {
 <SearchColumnsTable />
 ```
 
+> To disable search on a particular column, set `filterable: false` on a column you want to disable.
+
 ### Searching Through a Single Field
 
 `searchtabular.Field` provides a search control with a column listing and an input.
