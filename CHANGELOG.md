@@ -1,3 +1,8 @@
+1.8.0 / 2018-04-19
+==================
+
+  * Feature - Allow disabling specific search columns by setting `filterable: false` at a column. #16
+
 1.7.0 / 2017-10-02
 ==================
 
