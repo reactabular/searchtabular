@@ -1,3 +1,8 @@
+1.9.0 / 2018-05-22
+==================
+
+  * Feature  - Extract class names from highlightCell, searchColumns. #17
+
 1.8.0 / 2018-04-19
 ==================
 
