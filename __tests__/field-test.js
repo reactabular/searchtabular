@@ -225,10 +225,10 @@ class Wrapper extends React.Component { // eslint-disable-line max-len, react/pr
   }
 }
 
-const CustomField = (props, classNames = {}) => <textfield className={classNames.customField || 'CustomField'} {...props} />;
+const CustomField = (props, classNames = {}) => <textfield className={classNames.customField || 'custom-field'} {...props} />;
 const CustomSelect = ({ options, onChange, classNames = {} }) => (
   <div>
-    <input className={classNames.controllField || 'controlled-field'} type="text" onChange={onChange} defaultValue="all" />
+    <input className={classNames.controlField || 'controlled-field'} type="text" onChange={onChange} defaultValue="all" />
     <ul>
       { options.map(({ key, name, value }) => (
         <li key={key} data-value={value}>{name}</li>)
