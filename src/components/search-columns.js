@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchColumns = ({ columns, query, onChange }) => {
+const SearchColumns = ({ columns, query, onChange, classNames }) => {
   const onQueryChange = (event) => {
     onChange({
       ...query,
@@ -12,11 +12,11 @@ const SearchColumns = ({ columns, query, onChange }) => {
   return (
     <tr>
       {columns.map((column, i) => (
-        <th key={`${column.property || i}-column-filter`} className="column-filter">
+        <th key={`${column.property || i}-column-filter`} className={classNames.filter}>
           {(column && column.property) && (!('filterable' in column) || column.filterable) ?
             <input
               onChange={onQueryChange}
-              className="column-filter-input"
+              className={classNames.filterInput}
               name={column.property}
               placeholder={column.filterPlaceholder || ''}
               value={query[column.property] || ''}
@@ -29,11 +29,19 @@ const SearchColumns = ({ columns, query, onChange }) => {
 };
 SearchColumns.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
+  classNames: PropTypes.object,
   onChange: PropTypes.func.isRequired,
   query: PropTypes.object
 };
+
 SearchColumns.defaultProps = {
-  query: {}
+  query: {},
+  classNames: {
+    filter: 'column-filter',
+    filterInput: 'column-filter-input'
+  }
+
+
 };
 
 export default SearchColumns;
