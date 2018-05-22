@@ -1,7 +1,7 @@
 import { isArray } from 'lodash';
 import React from 'react';
 
-const highlightValue = (value, highlights, index = 0) => {
+const highlightValue = (value, highlights, index = 0, classNames = {}) => {
   if (!highlights) {
     return <span>{value}</span>;
   }
@@ -34,14 +34,14 @@ const highlightValue = (value, highlights, index = 0) => {
       );
     }
     children.push(
-      <span className="highlight" key={`${x}-match`}>{matchingText}</span>
+      <span className={classNames.highlight || 'highlight'} key={`${x}-match`}>{matchingText}</span>
     );
   }
   children.push(
     <span key={`${x}-remainder`}>{val.slice(currentPosition)}</span>
   );
 
-  return <span className="search-result" key={`result-${index}`}>{children}</span>;
+  return <span className={classNames.searchResult || 'search-result'} key={`result-${index}`}>{children}</span>;
 };
 
 export default highlightValue;

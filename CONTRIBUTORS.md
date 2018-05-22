@@ -4,3 +4,4 @@
 * [José Diaz Seng](https://github.com/joseds) - React 15.5 upgrades, fixed deprecations, Jest upgrade. #11
 * [Artem Sapegin](https://github.com/sapegin) - Support React 16. #15
 * [Bill Blanchard](https://github.com/chromakey) - Allow toggling search columns. #16
+* [Vitalii Parshykov](https://github.com/avorona) - Extract class names from highlightCell, searchColumns

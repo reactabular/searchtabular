@@ -489,10 +489,10 @@ class SearchTable extends React.Component {
   }
 }
 
-const CustomField = props => <input className="CustomField" {...props} />;
-const CustomSelect = ({ options, onChange }) => (
+const CustomField = (props, classNames) => <input className={classNames.customField || "custom-field"} {...props} />;
+const CustomSelect = ({ options, onChange, classNames }) => (
   <div>
-    <input className="controlled-field" type="text" onChange={onChange} defaultValue="all" />
+    <input className={classNames.controlField || "controlled-field"} type="text" onChange={onChange} defaultValue="all" />
     <ul>
       { options.map(({ key, name, value }) => (
         <li key={key} data-value={value}>{name}</li>)

@@ -54,11 +54,15 @@ describe('search.highlightValue', function () {
 
   it('highlights whole if there is a full match', function () {
     const value = 'foobar';
+    const classNames = {
+      searchResult: 'foo',
+      highlight: 'bar'
+    };
     const result = TestUtils.renderIntoDocument(
       React.createElement(
         Wrapper,
         {},
-        highlightValue(value, [{ startIndex: 0, length: value.length }])
+        highlightValue(value, [{ startIndex: 0, length: value.length }], classNames)
       )
     );
     const highlightResult = TestUtils.findRenderedDOMComponentWithClass(
