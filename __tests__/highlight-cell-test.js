@@ -15,8 +15,13 @@ describe('search.highlightCell', function () {
             _highlights: {
               demo: [{ startIndex: 0, length: value.length }]
             }
+
           },
-          property: 'demo'
+          property: 'demo',
+          _classNames: {
+            searchResult: 'foo',
+            highlight: 'bar'
+          }
         })
       )
     );

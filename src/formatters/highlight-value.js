@@ -1,7 +1,7 @@
 import { isArray } from 'lodash';
 import React from 'react';
 
-const highlightValue = (value, highlights, index = 0, classNames) => {
+const highlightValue = (value, highlights, index = 0, classNames = {}) => {
   if (!highlights) {
     return <span>{value}</span>;
   }
